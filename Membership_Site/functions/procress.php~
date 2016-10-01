@@ -1,0 +1,25 @@
+<?php
+    
+require 'db/connectToDb.php';
+
+
+if(!empty($_POST)){
+
+	$username = $mysqli->real_escape_string($_POST['username']);
+	$password = $mysqli->real_escape_string($_POST['password']);
+
+        //$mysqli = new mysqli("localhost", "root", "", "testDB");
+	$sql = "INSERT INTO user(username, password) VALUES ('$username','$password')";
+
+	$mysqli->query($sql);
+	$mysqli->close();
+	header("Location: http://localhost/phpApp/index.php");
+
+}else{
+
+
+
+
+}
+
+?>

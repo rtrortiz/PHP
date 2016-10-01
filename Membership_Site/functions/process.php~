@@ -1,0 +1,25 @@
+<?php
+    
+//include 'db/connectToDb.php';
+
+
+if(!empty($_POST)){
+
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+        $mysqli = new mysqli("localhost", "root", "", "userDB");
+	$sql = "INSERT INTO users(username, password) VALUES ('$username','$password')";
+
+	$mysqli->query($sql);
+	$mysqli->close();
+	header("Location: http://localhost/phpApp2/members.php");
+
+}else{
+
+
+
+
+}
+
+?>

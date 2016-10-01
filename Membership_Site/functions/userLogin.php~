@@ -1,0 +1,42 @@
+<?php 
+
+if(!empty($_POST)){
+
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	$mysqli = new mysqli("localhost", "root", "", "userDB");
+	$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+
+	$result = $mysqli->query($sql);
+
+	//Access the retunred data
+	//$row = $result->fetch_array(MYSQLI_NUM);
+	$row = $result->fetch_array(MYSQLI_BOTH);
+	session_start();
+
+	$_SESSION["UserID"] = $row['id'];
+
+	//$mysqli->close();
+	header("Location: http://localhost/phpApp2/members.php");
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
